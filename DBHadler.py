@@ -89,22 +89,17 @@ class dbHandlerMaster(UtilsMaster):
         
 
 
-    def updateExistingTable(self):
-        conn = self.connectWithDataBase()
-        cursor = conn.cursor()
-        new_date = 88
-        data = 4
-        cursor.execute('''
-            UPDATE SensorData
-                SET date = ?
-                WHERE DATA = ?
-                ''',(new_date,data))
-        conn.commit()
-        conn.close()
-
-    def CreateNewTableForNewSensor(self):
-        conn  = self.connectWithDataBase()
-        cursor = conn.cursor()
+    def CreateNewTableForNewSensor(self,tablename):
+        try:
+            self.tablename = tablename
+            conn  = self.connectWithDataBase()
+            cursor = conn.cursor()
+            cursor.execute('CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY,name TEXT NOT NULL,age INTEGER)'.format(table_name=self.tablename))
+            conn.commit()
+            conn.close()
+        except:
+            print("failed")
+        
 
 
 
@@ -113,3 +108,4 @@ class dbHandlerMaster(UtilsMaster):
 # v.insertDataIntoTable()
 # v.updateExistingTable()
 # v.ExtractingDataFromDB()
+# v.CreateNewTableForNewSensor('helloooooo')
