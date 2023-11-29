@@ -13,5 +13,3 @@ class SensorHandlerMaster(dbHandlerMaster):
         self.CreateNewTableForNewSensor(self.table)
 
 
-# v = SensorHandlerMaster()
-# v.addNewSenosr('hiiiii')

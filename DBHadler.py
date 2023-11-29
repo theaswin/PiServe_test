@@ -29,13 +29,18 @@ class dbHandlerMaster(UtilsMaster):
         try:
             conn  = self.connectWithDataBase()
             conn.execute('''
-                CREATE TABLE IF NOT EXISTS SensorData (
-                         date TEXT,
-                         DATA INT
+                CREATE TABLE IF NOT EXISTS DataFromSensor (
+                         Response1 INT,
+                         Response2 INT,
+                         Response3 INT,
+                         Response4 INT,
+                         Response5 INT,
+                         Date DATE
+
                 )
                          ''')
             # conn.execute("Drop table SensorData")
-            print("Created")
+            # print("Created")
             conn.commit()
             conn.close()
         except:
@@ -51,8 +56,8 @@ class dbHandlerMaster(UtilsMaster):
             
             for row in csv_reader:
                 conn.execute('''
-                INSERT INTO SensorData (DATA,date) VALUES (?,?)
-                    ''',(row[0],row[1]))
+                INSERT INTO DataFromSensor (Response1,Response2,Response3,Response4,Response5,Date) VALUES (?,?,?,?,?,?)
+                    ''',(row[0],row[1],row[2],row[3],row[4],row[5]))
             conn.commit()
             conn.close()
         
@@ -62,7 +67,7 @@ class dbHandlerMaster(UtilsMaster):
         self.fileName = 'output.csv'
         try:
             conn = self.connectWithDataBase()
-            sqlSelect = "SELECT *  FROM SensorData"
+            sqlSelect = "SELECT *  FROM DataFromSensor"
             cursor = conn.cursor()
 
             cursor.execute(sqlSelect)
@@ -104,7 +109,7 @@ class dbHandlerMaster(UtilsMaster):
     def DataBaseAndTableForNewSensor(self):
         sen = sqlite3.connect(self.Available_sensors+'.db')
         c = sen.cursor()
-        c.execute('CREATE TABLE IF NOT EXISTS ActiveSensors (id INTEGER,name TEXT,inputs_nodes TEXT,establised_year TEXT,failure_percentage TEXT,working_capacity TEXT,Response_time TEXT,latency TEXT,current_state TEXT,future_scope TEXT)')
+        c.execute('CREATE TABLE IF NOT EXISTS ActiveSensors (id INTEGER,name TEXT,inputs_nodes INTEGER,establised_year YEAR,failure_percentage INT,working_capacity INTEGER,Response_time INTEGER,latency INTEGER,current_state TEXT,future_scope TEXT)')
 
         sen.commit()
         sen.close()
@@ -157,7 +162,7 @@ class dbHandlerMaster(UtilsMaster):
 
 
 
-v = dbHandlerMaster()
+# v = dbHandlerMaster()
 # v.createNewTable()
 # v.insertDataIntoTable()
 # v.updateExistingTable()

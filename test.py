@@ -1,5 +1,13 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
 
 
+class new():
+    def Pie(self):
+        self.df = pd.read_csv('.//DBExtracted/output.csv')
+        self.Res1 = self.df['Response3'].mean()
+        print(self.Res1)
 
-self.datas =[self. [self.id]
-self.blank =[self. [self.name]
+v = new()
+v.Pie()

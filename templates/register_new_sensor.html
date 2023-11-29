@@ -8,18 +8,16 @@
 <body>
     <h1 style="text-align: center;">Add New Sensor</h1>
     <form action="http://127.0.0.1:5000/register_sensor" method="GET">
-        ID for sensor : <input type="text" name="id" id="id"><br>
+        ID for sensor : <input type="number" name="id" id="id"><br>
         Name of your sensor : <input type="text" name="name" id="name" autocomplete="off"> <br>
-        Available Input nodes : <input type="text" name="input_nodes" id="input_nodes" autocomplete="off"><br>
-        established_year : <input type="text" name="establised_year" id="establised_year"><br>
-        failure_percentage = <input type="text" name="failure_percentage" id="failure_percentage"><br>
-        working_capacity : <input type="text" name="working_capacity" id="working_capacity"><br>
+        Available Input nodes : <input type="number" name="input_nodes" id="input_nodes" autocomplete="off"><br>
+        established_year : <input type="number" name="establised_year" id="establised_year"><br>
+        failure_percentage = <input type="number" name="failure_percentage" id="failure_percentage"><br>
+        working_capacity : <input type="number" name="working_capacity" id="working_capacity"><br>
         response_time : <input type="text" name="response_time" id="response_time"><br>
-        latency : <input type="text" name="latency" id="latency"><br>
+        latency : <input type="number" name="latency" id="latency"><br>
         current_state : <input type="text" name="current_state" id="current_state"><br>
         future_scope : <input type="text" name="future_scope" id="future_scope"><br>
-
-
 
 
         <button type="submit">Submit</button>
