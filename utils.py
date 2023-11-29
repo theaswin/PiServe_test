@@ -28,13 +28,6 @@ class UtilsMaster():
             csv_writer.writerows(rows)
     
 
-    def GetManualInput(self):
-        pass
-    
-
-    def ManualDashboardView(self):
-        pass
-
     def UpdateExistingSensorData(self):
         try:
             conn  = sqlite3.connect(self.DataBaseName+'.db')
