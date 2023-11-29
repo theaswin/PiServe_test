@@ -7,8 +7,7 @@ import pandas as pd
 import seaborn as sns
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 import matplotlib.pyplot as plt
-import io
-import base64
+from VizHandler import VisualisatioMaster
 
 app = Flask(__name__)
 
@@ -27,15 +26,7 @@ def add_new_sensor():
     new_sensor.addNewSenosr(name)
     return render_template('add_new_sensor.html')
 
-@app.route('/RandomGenerator')
-def RandomGenerator():
-    datagen = UtilsMaster()
-    datagen.GenerateRandomDataAndDate()
-    datagen.DataToCSV()
-    db = dbHandlerMaster()
-    db.createNewTable()
-    db.insertDataIntoTable()
-    return render_template('generate_random_data.html')
+
     
 
 
@@ -63,17 +54,27 @@ def register_sensor():
 
 @app.route('/Dashboard')
 def Dashboard():
+    return render_template('Dashboard.html')
+
+@app.route('/pipeline')
+def pipeline():
+    datagen = UtilsMaster()
+    datagen.GenerateRandomDataAndDate()
+    datagen.DataToCSV()
     db = dbHandlerMaster()
-    db.ExtractingDataFromDB()
-    df = pd.read_csv('./DBExtracted/output.csv')
-    x = list(df['Response1'])
-    y = list(df['Response2'])
-    sns.lineplot(x,y)
-    canvas = FigureCanvas(fig)
-    img = io.BytesIO()
-    fig.savefig(img)
-    img.seek(0)
-    return send_file(img,mimetype='img/png')
+    db.createNewTable()
+    db.insertDataIntoTable()
+    plots = VisualisatioMaster()
+    plots.LinePlot1()
+    plots.LinePlot2()
+    plots.Countplot1()
+    plots.Countplot2()
+    plots.Countplot3()
+    plots.Countplot4()
+    plots.Countplot5()
+    plots.Pie()
+    return render_template('Dashboard.html')
+    
 
 
 @app.route('/filtering')
@@ -87,4 +88,4 @@ def sorting():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

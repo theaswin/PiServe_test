@@ -5,7 +5,7 @@ from DBHadler import dbHandlerMaster
 
 class SensorHandlerMaster(dbHandlerMaster):
     def __init__(self) -> None:
-        self.DataBaseName = 'Sensor'
+        self.DataBaseName = 'SensorData'
 
     def addNewSenosr(self,table):
         self.table = table

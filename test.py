@@ -1,13 +1,7 @@
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
+import sqlite3
+conn = sqlite3.connect('SensorData.db')
+cur = conn.cursor()
 
-
-class new():
-    def Pie(self):
-        self.df = pd.read_csv('.//DBExtracted/output.csv')
-        self.Res1 = self.df['Response3'].mean()
-        print(self.Res1)
-
-v = new()
-v.Pie()
+cur.execute("delete from DataFromSensor")
+conn.commit()
+conn.close()

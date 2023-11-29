@@ -10,7 +10,7 @@ import os
 
 class dbHandlerMaster(UtilsMaster):
     def __init__(self):
-        self.newTableForSensor = 'Sensor2'
+        
         self.DataBaseName = 'SensorData'
         self.Available_sensors = 'SENSOR'
         self.csvFile = 'PYgenerated/data.csv'
@@ -66,7 +66,7 @@ class dbHandlerMaster(UtilsMaster):
         self.fileFromDb = 'DBExtracted/'
         self.fileName = 'output.csv'
         try:
-            conn = self.connectWithDataBase()
+            conn  = sqlite3.connect(self.DataBaseName+'.db')
             sqlSelect = "SELECT *  FROM DataFromSensor"
             cursor = conn.cursor()
 
@@ -99,7 +99,7 @@ class dbHandlerMaster(UtilsMaster):
             self.tablename = tablename
             conn  = self.connectWithDataBase()
             cursor = conn.cursor()
-            cursor.execute('CREATE TABLE IF NOT EXISTS {table_name} (id INTEGER PRIMARY KEY,name TEXT NOT NULL,age INTEGER)'.format(table_name=self.tablename))
+            cursor.execute('CREATE TABLE IF NOT EXISTS {table_name} (Response1 INT,Response2 INT,Response3 INT,Response4 INT,Response5 INT,Date DATE)'.format(table_name=self.tablename))
             conn.commit()
             conn.close()
         except:
@@ -160,15 +160,3 @@ class dbHandlerMaster(UtilsMaster):
 
 
 
-
-
-# v = dbHandlerMaster()
-# v.createNewTable()
-# v.insertDataIntoTable()
-# v.updateExistingTable()
-# v.ExtractingDataFromDB()
-# v.CreateNewTableForNewSensor('helloooooo')
-# v.RegisterAnNewSensorToDB('1','new')
-# v.DataBaseAndTableForNewSensor()
-# v.CreateCSVForNewSensor('1111','waferSensor','7','2021','12','88','medium','22','Old','medium')
-# v.InsertCSVDataToDB()

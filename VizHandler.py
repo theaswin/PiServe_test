@@ -8,7 +8,9 @@ warnings.filterwarnings('ignore')
 
 class VisualisatioMaster():
     def __init__(self):
-        self.df = pd.read_csv('./DBExtracted/output.csv')
+        # self.df = pd.read_csv('./DBExtracted/output.csv')
+        self.df = pd.read_csv('./PYgenerated/data.csv')
+
         
     def LinePlot1(self):
         fig,ax = plt.subplots(figsize = (9,7))
@@ -19,7 +21,7 @@ class VisualisatioMaster():
         plt.ylabel('Response2')
         sns.lineplot(x,y)
         canvas = FigureCanvas(fig)
-        fig.savefig('viz/lineplotRes1Res2.png')
+        fig.savefig('static/images/lineplotRes1Res2.png')
 
     def LinePlot2(self):
         fig,ax = plt.subplots(figsize = (9,7))
@@ -30,7 +32,7 @@ class VisualisatioMaster():
         plt.ylabel('Response4')
         sns.lineplot(x,y)
         canvas = FigureCanvas(fig)
-        fig.savefig('viz/lineplotRes3Res4.png')
+        fig.savefig('static/images/lineplotRes3Res4.png')
 
     def Countplot1(self):
         # Create a pie plot using Seaborn and Matplotlib
@@ -43,7 +45,7 @@ class VisualisatioMaster():
         sns.countplot(x='Response1', data=self.df, palette='pastel', ax=ax)
         
 
-        fig.savefig("viz/CountplotResponse1")
+        fig.savefig("static/images/CountplotResponse1")
 
     def Countplot2(self):
         # Create a pie plot using Seaborn and Matplotlib
@@ -54,7 +56,7 @@ class VisualisatioMaster():
 
         fig, ax = plt.subplots()
         sns.countplot(x='Response2', data=self.df, palette='pastel', ax=ax)
-        fig.savefig("viz/CountplotResponse2")
+        fig.savefig("static/images/CountplotResponse2")
     
     def Countplot3(self):
         # Create a pie plot using Seaborn and Matplotlib
@@ -65,7 +67,7 @@ class VisualisatioMaster():
 
         fig, ax = plt.subplots()
         sns.countplot(x='Response3', data=self.df, palette='pastel', ax=ax)
-        fig.savefig("viz/CountplotResponse3")
+        fig.savefig("static/images/CountplotResponse3")
 
     def Countplot4(self):
         # Create a pie plot using Seaborn and Matplotlib
@@ -76,7 +78,7 @@ class VisualisatioMaster():
 
         fig, ax = plt.subplots()
         sns.countplot(x='Response4', data=self.df, palette='pastel', ax=ax)
-        fig.savefig("viz/CountplotResponse4")
+        fig.savefig("static/images/CountplotResponse4")
 
     def Countplot5(self):
         # Create a pie plot using Seaborn and Matplotlib
@@ -88,7 +90,7 @@ class VisualisatioMaster():
         fig, ax = plt.subplots()
         sns.countplot(x='Response5', data=self.df, palette='pastel', ax=ax)
         
-        fig.savefig("viz/CountplotResponse5")
+        fig.savefig("static/images/CountplotResponse5")
     
     def Pie(self):
         self.Res1 = self.df['Response1'].mean()
@@ -103,13 +105,10 @@ class VisualisatioMaster():
         fig, ax = plt.subplots()
         ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=sns.color_palette('pastel'), wedgeprops=dict(width=0.3))
         ax.axis('equal')
-        fig.savefig("viz/pie.png")
+        fig.savefig("static/images/pie.png")
 
 
 
 
 
 
-v = VisualisatioMaster()
-
-v.Pie()

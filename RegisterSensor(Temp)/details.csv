@@ -1,2 +1,2 @@
 id,name,inputs_nodes,establised_year,failure_percentage,working_capacity,Response_time,latency,current_state,future_scope
-5001,wafer_5001,96,200,10,55,2,5,GOOD,Medium
+,,,,,,,,,
