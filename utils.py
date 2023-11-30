@@ -10,7 +10,7 @@ class UtilsMaster():
     def __init__(self) -> None:
         self.dates = []
         self.current_datetime = datetime.now()
-        self.DataBaseName = 'Sensor'
+        self.DataBaseName = 'SENSOR'
         self.response1 ,self.response2,self.response3,self.response4,self.response5= [],[],[],[],[]
 
 
@@ -39,20 +39,19 @@ class UtilsMaster():
             csv_writer.writerows(rows)
     
 
-    def UpdateExistingSensorData(self):
+    def UpdateExistingSensorData(self,name,id):
         try:
             conn  = sqlite3.connect(self.DataBaseName+'.db')
         
             cursor = conn.cursor()
-            new_date = 8888888888
-            data = 4
+            self.name = name
+            self.id = id
             cursor.execute('''
-                UPDATE SensorData
-                    SET date = ?
-                    WHERE DATA = ?
-                    ''',(new_date,data))
+                UPDATE ActiveSensors
+                    SET name = ?
+                    WHERE id = ?
+                    ''',(self.name,self.id))
             conn.commit()
             conn.close()
         except:
             print("not")
-

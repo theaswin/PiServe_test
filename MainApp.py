@@ -77,9 +77,13 @@ def pipeline():
     
 
 
-@app.route('/filtering')
-def filtering():
-    return render_template('filtering.html')
+@app.route('/update',methods = ['GET'])
+def update():
+    name = request.args.get('name')
+    id  = request.args.get('id')
+    updater = UtilsMaster()
+    updater.UpdateExistingSensorData(name=name,id=id)
+    return render_template('update.html')
 
 @app.route('/sorting')
 def sorting():
