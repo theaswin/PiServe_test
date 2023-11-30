@@ -55,3 +55,6 @@ class UtilsMaster():
             conn.close()
         except:
             print("not")
+
+v = UtilsMaster()
+v.UpdateExistingSensorData('aswin',5001)
