@@ -155,6 +155,7 @@ class dbHandlerMaster(UtilsMaster):
                 sen.execute(f'''
                 INSERT INTO ActiveSensors (id,name,inputs_nodes,establised_year,failure_percentage,working_capacity,Response_time,latency,current_state,future_scope) VALUES (?,?,?,?,?,?,?,?,?,?)
                     ''',(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9]))
+                sen.execute("delete from ActiveSensors where name = '' " )
             sen.commit()
             sen.close()
 

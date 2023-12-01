@@ -19,6 +19,7 @@ ax = sns.set_style(style="darkgrid")
 def home():
     return render_template('index.html')
 
+
 @app.route('/add_new_sensor',methods = ['GET'])
 def add_new_sensor():
     name = request.args.get('name')
@@ -27,7 +28,6 @@ def add_new_sensor():
     return render_template('add_new_sensor.html')
 
 
-    
 
 
 
@@ -43,14 +43,17 @@ def register_sensor():
     latency = request.args.get('latency')
     current_state = request.args.get('current_state')
     future_scope = request.args.get('future_scope')
+
     creating_sensor = dbHandlerMaster()
     creating_sensor.DataBaseAndTableForNewSensor()
+
     creating_sensor.CreateCSVForNewSensor(id=id,name=name,inputs_nodes=input_nodes,
     establised_year=establised_year,failure_percentage=failure_percentage,
     working_capacity=working_capacity,Response_time=response_time,latency=latency,
     current_state=current_state,future_scope=future_scope)
     creating_sensor.InsertCSVDataToDB()
     return render_template('register_new_sensor.html')
+
 
 @app.route('/Dashboard')
 def Dashboard():
