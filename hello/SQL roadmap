@@ -1,0 +1,13 @@
+what are sql
+
+SQL, or Structured Query Language, is a domain-specific language used in programming and managing relational databases. It is designed for managing data in a relational database management system (RDBMS) or for stream processing in a relational data stream management system (RDSMS). SQL is widely used for tasks such as querying data, updating data, inserting data, and deleting data from databases.
+
+what are relational database
+
+A relational database is a type of database that organizes and stores data in a structured format, using tables, rows, and columns. It is called a "relational" database because it establishes a relationship between data points in different tables. This relational model, proposed by Edgar F. Codd in 1970, allows data to be logically organized and easily accessible.
+
+
+what is columns,rows
+
+Columns define the type of data that can be stored in a table.
+Rows contain the actual data records.

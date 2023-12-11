@@ -1,0 +1,4 @@
+activation function
+sigmoid = f(z) = 1/1+e-z
+tanh = f(z) = tanh(z)
+relu = f(z) = max(0,z)

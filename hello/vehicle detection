@@ -1,0 +1,25 @@
+data collect
+resize
+split train test (pypi split folder)
+data augmentation (Augmentor)
+
+annotation labelImg
+(images + xml)
+
+images 
+   -- train
+         * image
+         * xml file
+         * image
+         * xml file
+   
+   -- test
+   	 * images
+   	 * xml file
+   	 * images
+   	 * xml file
+ 
+section 5 tensorflow 1.x (object detection utils)
+protos to python
+
+

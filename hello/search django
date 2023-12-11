@@ -1,0 +1,12 @@
+create a function for seach
+search form method='get' action='/search'
+input field name = 'query' id='search'
+
+create a template for search that contain products
+
+function
+def search(request):
+	query = request.GET['query']
+	allpost = model.objects.filter(title__icontains=query)
+	params = {'model':model}
+	return render(request,'search.html',params)
